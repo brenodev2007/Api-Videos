@@ -40,6 +40,10 @@ public class VideosService {
             .orElseThrow(() -> new RuntimeException("Vídeo não encontrado com id: " + id));
     }
 
+    public void deleteVideo(Long id) {
+        videosRepository.deleteById(id);
+    }
+
 
     
 
