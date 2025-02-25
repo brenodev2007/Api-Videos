@@ -25,6 +25,10 @@ public class VideosService {
         return videosRepository.findById(id).orElse(null);
     }
 
+    public Video createVideo(Video video){
+        return videosRepository.save(video);
+    }
+
 
     
 

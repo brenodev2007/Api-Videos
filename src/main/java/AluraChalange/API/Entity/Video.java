@@ -18,11 +18,11 @@ public class Video {
     private Long id;
 
 
-    @Column(name = "titulo")
+    @Column(name = "titulo", nullable = false)
     private String titulo;
-    @Column(name = "descricao")
+    @Column(name = "descricao", nullable = false)
     public String descricao;
-    @Column(name = "url")
+    @Column(name = "url", nullable = false)
     private String url;
     
 

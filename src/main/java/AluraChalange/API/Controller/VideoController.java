@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import AluraChalange.API.Entity.Video;
@@ -28,5 +30,11 @@ public class VideoController {
     public Video getVideoById(@PathVariable Long id) {
         return videoService.getVideoById(id);
     }
+
+   @PostMapping("/videos")
+    public Video createVideo(@RequestBody Video video) {
+        return videoService.createVideo(video);
+    }
+
 
 }
