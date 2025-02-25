@@ -29,6 +29,17 @@ public class VideosService {
         return videosRepository.save(video);
     }
 
+    public Video updateVideo(Long id, Video videoDetails) {
+        return videosRepository.findById(id)
+            .map(video -> {
+                video.setTitulo(videoDetails.getTitulo());  // Atualiza o título
+                video.setDescricao(videoDetails.getDescricao()); // Atualiza a descrição (caso tenha)
+                video.setUrl(videoDetails.getUrl()); // Atualiza a URL (caso tenha)
+                return videosRepository.save(video);
+            })
+            .orElseThrow(() -> new RuntimeException("Vídeo não encontrado com id: " + id));
+    }
+
 
     
 
