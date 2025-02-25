@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import AluraChalange.API.Entity.Video;
+import AluraChalange.API.Exeptions.VideoNotFoundException;
 import AluraChalange.API.repository.VideoRepository;
 
 @Service
@@ -22,7 +23,8 @@ public class VideosService {
     }
 
     public Video getVideoById(Long id){
-        return videosRepository.findById(id).orElse(null);
+        return videosRepository.findById(id)
+        .orElseThrow(() -> new VideoNotFoundException("Vídeo com ID " + id + " não encontrado"));
     }
 
     public Video createVideo(Video video){
