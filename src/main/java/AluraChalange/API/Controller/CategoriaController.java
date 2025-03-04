@@ -3,7 +3,6 @@ package AluraChalange.API.Controller;
 import AluraChalange.API.Entity.Categoria;
 import AluraChalange.API.Service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

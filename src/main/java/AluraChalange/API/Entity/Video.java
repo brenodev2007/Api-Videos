@@ -2,6 +2,7 @@ package AluraChalange.API.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @Entity
@@ -20,7 +21,8 @@ public class Video {
     @Column(name = "url", nullable = false)
     private String url;
 
-    @JoinColumn
+    @NotNull// Validação no nível da aplicação
+    @JoinColumn(name = "categoria_id", nullable = false)
     @ManyToOne
     private Categoria categoria;
 
