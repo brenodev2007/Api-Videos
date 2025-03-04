@@ -1,7 +1,9 @@
 package AluraChalange.API.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+import AluraChalange.API.Entity.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,14 @@ public class VideosService {
     public Video getVideoById(Long id){
         return videosRepository.findById(id)
         .orElseThrow(() -> new VideoNotFoundException("Vídeo com ID " + id + " não encontrado"));
+    }
+
+    public Optional<Video> finByTitulo (String titulo){
+        return videosRepository.findByTitulo(titulo);
+    }
+
+    public List<Video> findByCategoria(Categoria categoria){
+        return videosRepository.findByCategoria(categoria);
     }
 
     public Video createVideo(Video video){
