@@ -7,5 +7,5 @@ import AluraChalange.API.Entity.Video;
 
 @Repository
 public interface VideoRepository extends JpaRepository<Video, Long> {
-    
+    public Video findByTitulo(String titulo);
 }
