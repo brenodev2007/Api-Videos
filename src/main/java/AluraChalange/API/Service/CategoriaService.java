@@ -31,7 +31,7 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
-    public Categoria atualizarCategoria(Long id) {
+    public Categoria atualizarCategoria(Long id, Categoria categoria) {
         return categoriaRepository.save(new Categoria());
     }
 

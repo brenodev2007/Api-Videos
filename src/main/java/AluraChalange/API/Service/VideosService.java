@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import AluraChalange.API.Entity.Categoria;
+import AluraChalange.API.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,9 @@ public class VideosService {
 
     @Autowired
     private VideoRepository videosRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
 
     public List<Video> getAllvideos(){
@@ -37,7 +41,10 @@ public class VideosService {
         return videosRepository.findByCategoria(categoria);
     }
 
-    public Video createVideo(Video video){
+    public Video createVideo(Video video, Long idCategoria) {
+        Categoria categoria = categoriaRepository.findById(idCategoria)
+                .orElseThrow(() -> new RuntimeException("Categoria não encontrada com id: " + idCategoria));
+        video.setCategoria(categoria);
         return videosRepository.save(video);
     }
 
