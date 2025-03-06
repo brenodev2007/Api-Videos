@@ -5,9 +5,12 @@ import java.util.Optional;
 
 import AluraChalange.API.Entity.Categoria;
 import AluraChalange.API.repository.CategoriaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 
 import AluraChalange.API.Entity.Video;
 import AluraChalange.API.Exeptions.VideoNotFoundException;
@@ -24,8 +27,9 @@ public class VideosService {
     private CategoriaRepository categoriaRepository;
 
 
-    public List<Video> getAllvideos(){
-        return videosRepository.findAll();
+    public Page<Video> getAllVideos(int page){
+        Pageable pageable = PageRequest.of(page, 5); // 5 itens por página
+        return videosRepository.findAll(pageable);
     }
 
     public Video getVideoById(Long id){
