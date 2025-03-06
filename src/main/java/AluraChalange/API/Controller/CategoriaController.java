@@ -3,10 +3,9 @@ package AluraChalange.API.Controller;
 import AluraChalange.API.Entity.Categoria;
 import AluraChalange.API.Service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/categorias")
@@ -17,9 +16,9 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @GetMapping("/")
-    public List<Categoria> getAllCategorias(){
-        return categoriaService.getAllCategorias();
-    }
+    public Page<Categoria> getCategorias(@RequestParam(defaultValue = "0") int page){
+        return categoriaService.getAllCategorias(page);
+    } 
 
     @GetMapping("/{id}")
     public Categoria getCategoriaById(Long id){

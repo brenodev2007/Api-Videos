@@ -3,9 +3,11 @@ package AluraChalange.API.Service;
 import AluraChalange.API.Entity.Categoria;
 import AluraChalange.API.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,8 +17,9 @@ public class CategoriaService {
     private CategoriaRepository categoriaRepository;
 
 
-    public List<Categoria> getAllCategorias(){
-        return categoriaRepository.findAll();
+    public Page<Categoria> getAllCategorias(int page){
+        Pageable pageable = PageRequest.of(page, 5); // 5 itens por página
+        return categoriaRepository.findAll(pageable);
     }
 
     public Optional<Categoria> getCategoriaById(Long id){
