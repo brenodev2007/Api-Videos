@@ -19,7 +19,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/publico/**").permitAll() // Rotas públicas
+                .requestMatchers("/videos/free").permitAll() // Rotas públicas
                 .anyRequest().authenticated() // Bloqueia todas as outras rotas
             )
             .httpBasic(httpBasic -> {}) // Habilita Basic Auth corretamente

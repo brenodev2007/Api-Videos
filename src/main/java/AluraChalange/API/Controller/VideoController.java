@@ -2,10 +2,13 @@ package AluraChalange.API.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import AluraChalange.API.Entity.Video;
 import AluraChalange.API.Service.VideosService;
+
+import java.util.List;
 
 @RestController
 public class VideoController {
@@ -20,6 +23,11 @@ public class VideoController {
         return videoService.getAllVideos(page);
     }
 
+    @GetMapping("/free")
+    public ResponseEntity<List<Video>> getFreeVideos() {
+        List<Video> videos = videoService.getFreeVideos();
+        return ResponseEntity.ok(videos);
+    }
 
     @GetMapping("/videos/{id}")
     public Video getVideoById(@PathVariable Long id) {
