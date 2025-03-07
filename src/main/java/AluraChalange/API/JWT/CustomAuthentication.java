@@ -11,15 +11,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class CustomAuthentication implements  AuthenticationEntryPoint{
+public class CustomAuthentication implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException authException) throws IOException, ServletException {
-                response.setContentType("application/json");
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("{\"error\": \"Acesso negado! Você precisa estar autenticado para acessar este recurso.\"}");
-        throw new UnsupportedOperationException("Unimplemented method 'commence'");
+                         AuthenticationException authException) throws IOException {
+        response.setContentType("application/json");
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write("{\"error\": \"Acesso negado! Você precisa estar autenticado para acessar este recurso.\"}");
     }
     
 }
