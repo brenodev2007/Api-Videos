@@ -20,12 +20,12 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers(HttpMethod.GET, "/videos/free").permitAll() // Rotas públicas
+                    .requestMatchers(HttpMethod.GET, "/videos/free").permitAll()
                 .anyRequest().authenticated() // Bloqueia todas as outras rotas
             )
-            .httpBasic(httpBasic -> {}) // Habilita Basic Auth corretamente
+            .httpBasic(httpBasic -> {})
             .exceptionHandling(exception -> exception
-                .authenticationEntryPoint(customAuthenticationEntryPoint) // Configura a resposta personalizada
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
             )
             .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
