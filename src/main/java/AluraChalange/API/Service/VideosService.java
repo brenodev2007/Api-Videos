@@ -26,6 +26,9 @@ public class VideosService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    public List<Video> getFreeVideos() {
+        return videosRepository.findTop5ByOrderByIdAsc(); // Busca os 5 primeiros vídeos
+    }
 
     public Page<Video> getAllVideos(int page){
         Pageable pageable = PageRequest.of(page, 5); // 5 itens por página
