@@ -23,7 +23,7 @@ public class VideoController {
         return videoService.getAllVideos(page);
     }
 
-    @GetMapping("/free")
+    @GetMapping("/videos/free")
     public ResponseEntity<List<Video>> getFreeVideos() {
         List<Video> videos = videoService.getFreeVideos();
         return ResponseEntity.ok(videos);
